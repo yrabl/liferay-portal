@@ -661,6 +661,16 @@ public class ServiceContext implements Cloneable, Serializable {
 	public long getScopeGroupId() {
 		return _scopeGroupId;
 	}
+	
+	/**
+	 * Returns the ID of the live group corresponding to the current data scope 
+	 * of this service context.
+	 * @return the ID of the live group corresponding to the current data scope
+	 * @see    com.liferay.portal.model.Group
+	 */
+	public long getScopeGroupIdOrLiveGroupId() throws PortalException, SystemException {
+		return StagingUtil.getLiveGroupId(_scopeGroupId);
+	}
 
 	public ThemeDisplay getThemeDisplay() {
 		if (_request == null) {
